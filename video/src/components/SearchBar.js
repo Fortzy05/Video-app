@@ -2,15 +2,15 @@ import React from "react";
 
 
 class SearchBar extends React.Component{
-   State = {term: ''};
+   State = { term: ''};
 
- onInputChange = (event) => {
-     this.setState({term: event.target.value});
+// onInputChange = event => {
+   //  this.setState({ term: event.target.value});
 
- };
+// };
   onFormSubmit = event => {
     event.preventDefault();
-      this.props.onFormSubmit(this.state.term)
+      this.props.onSubmit(this.state.term)
   }
 
     render(){
@@ -22,7 +22,7 @@ class SearchBar extends React.Component{
                         <input className="ui input"
                          type="text" 
                          value={this.state.term}
-                         onChange={this.onInputChange}
+                         onChange={(e) => this.setState ( {term: e.target.value})}
                          />
                     </div>
                 </form>
