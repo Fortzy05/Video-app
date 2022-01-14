@@ -1,11 +1,20 @@
 import React from "react";
 import SearchBar from "./SearchBar";
+import youtube from "../Apis/youtube";
 
 
 class App extends React.Component{
+    onTermSubmit = async term =>{
+       await youtube.get('/search', {
+            params: {
+                q: term
+            }
+        });
+
+    };
     render(){
         return(
-            <div className="ui container"><SearchBar/></div>
+            <div className="ui container"><SearchBar onFormSubmit={this.onTermSubmit}/></div>
         )
     }
 }
